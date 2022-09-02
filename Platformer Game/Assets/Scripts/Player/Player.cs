@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float speed;
 
+    public Animator anim;
+
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -34,12 +36,25 @@ public class Player : MonoBehaviour
 
         if(movement > 0)
         {
+            if (!isJumping)
+            {
+                anim.SetInteger("Transition", 1);
+            }
             transform.eulerAngles = new Vector2(0,0);
         }
 
         if(movement < 0)
         {
+            if (!isJumping)
+            {
+                anim.SetInteger("Transition", 1);
+            }
             transform.eulerAngles = new Vector2(0, 180);
+        }
+
+        if(movement == 0 && !isJumping)
+        {
+            anim.SetInteger("Transition", 0);
         }
     }
 
@@ -52,11 +67,13 @@ public class Player : MonoBehaviour
                 rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 isJumping = true;
                 doubleJumping = true;
+                anim.SetInteger("Transition", 2);
             }
             else if (doubleJumping)
             {
                 rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 doubleJumping = false;
+                anim.SetInteger("Transition", 4);
             }
         }
     }

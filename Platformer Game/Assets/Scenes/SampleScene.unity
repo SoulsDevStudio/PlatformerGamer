@@ -381,6 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716297697}
   - component: {fileID: 716297698}
+  - component: {fileID: 716297699}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -397,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 716297696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5392, y: 1.5392, z: 1.5392}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1250002500}
@@ -455,6 +456,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &716297699
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716297696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2999e3703f7a3e6448d1916e16df360c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &733323963
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +789,7 @@ Transform:
   m_GameObject: {fileID: 1250002499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.16, y: -3.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5392, y: 1.5392, z: 1.5392}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 716297697}
@@ -788,9 +809,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.17}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.59
+  m_Radius: 0.38
 --- !u!114 &1250002502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 10
   speed: 5
+  anim: {fileID: 716297699}
 --- !u!50 &1250002503
 Rigidbody2D:
   serializedVersion: 4
