@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rig;
+    bool isJumping;
+    bool doubleJumping;
 
+    public float jumpForce;
     public float speed;
-
 
     void Start()
     {
@@ -16,7 +18,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        Jump();
     }
 
     void FixedUpdate()
@@ -38,6 +40,32 @@ public class Player : MonoBehaviour
         if(movement < 0)
         {
             transform.eulerAngles = new Vector2(0, 180);
+        }
+    }
+
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (!isJumping)
+            {
+                rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                isJumping = true;
+                doubleJumping = true;
+            }
+            else if (doubleJumping)
+            {
+                rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                doubleJumping = false;
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.gameObject.layer == 3)
+        {
+            isJumping = false;
         }
     }
 }
