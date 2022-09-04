@@ -5,12 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rig;
+
+    bool isAttacking;
     bool isJumping;
     bool doubleJumping;
 
+    public float radius;
     public float jumpForce;
     public float speed;
 
+    public Transform pointAttack;
     public Animator anim;
 
     void Start()
@@ -21,11 +25,36 @@ public class Player : MonoBehaviour
     void Update()
     {
         Jump();
+        Attack();
     }
 
     void FixedUpdate()
     {
         Move();   
+    }
+
+    void Attack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            isAttacking = true;
+            anim.SetInteger("Transition", 3);
+
+            Collider2D hit = Physics2D.OverlapCircle(pointAttack.position, radius);
+
+            StartCoroutine(OnAttack());
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(pointAttack.position, radius);
+    }
+
+    IEnumerator OnAttack()
+    {
+        yield return new WaitForSeconds(0.33f);
+        isAttacking = false;
     }
 
     void Move()
@@ -52,7 +81,7 @@ public class Player : MonoBehaviour
             transform.eulerAngles = new Vector2(0, 180);
         }
 
-        if(movement == 0 && !isJumping)
+        if(movement == 0 && !isJumping && !isAttacking)
         {
             anim.SetInteger("Transition", 0);
         }
