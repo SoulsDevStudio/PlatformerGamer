@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public Transform pointAttack;
     public Animator anim;
+    public LayerMask layer;
 
     void Start()
     {
@@ -40,7 +41,12 @@ public class Player : MonoBehaviour
             isAttacking = true;
             anim.SetInteger("Transition", 3);
 
-            Collider2D hit = Physics2D.OverlapCircle(pointAttack.position, radius);
+            Collider2D hit = Physics2D.OverlapCircle(pointAttack.position, radius,layer);
+
+            if(hit != null)
+            {
+                hit.GetComponent<Slime>().OnHit();
+            }
 
             StartCoroutine(OnAttack());
         }

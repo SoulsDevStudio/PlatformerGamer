@@ -5,6 +5,9 @@ using UnityEngine;
 public class Slime : MonoBehaviour
 {
     Rigidbody2D rig;
+    Animator anim;
+
+    public int health;
 
     public float speed;
     public float radius;
@@ -15,6 +18,7 @@ public class Slime : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     
@@ -45,6 +49,21 @@ public class Slime : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
+        }
+    }
+
+    public void OnHit()
+    {
+        anim.SetTrigger("Hit");
+        health--;
+
+        if(health <= 0)
+        {
+            speed = 0;
+            anim.SetTrigger("Death");
+            GetComponent<BoxCollider2D>().enabled = false;
+            Destroy(gameObject, 1f);
+            
         }
     }
 
