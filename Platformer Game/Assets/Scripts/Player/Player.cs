@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public float radius;
     public float jumpForce;
     public float speed;
+    
+    public int health;
 
     public Transform pointAttack;
     public Animator anim;
@@ -113,6 +115,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnHit()
+    {
+        if(health >= 1)
+        {
+            
+            anim.SetTrigger("Hit");
+            health--;
+        }
+        else
+        {
+            anim.SetTrigger("Death");
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         if(coll.gameObject.layer == 3)
@@ -120,4 +136,14 @@ public class Player : MonoBehaviour
             isJumping = false;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            OnHit();
+        }    
+    }
+
+
 }

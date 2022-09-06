@@ -859,6 +859,7 @@ MonoBehaviour:
   radius: 0.5
   jumpForce: 10
   speed: 5
+  health: 3
   pointAttack: {fileID: 1759648652}
   anim: {fileID: 716297699}
   layer:
