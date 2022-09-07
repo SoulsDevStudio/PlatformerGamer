@@ -10,9 +10,12 @@ public class Player : MonoBehaviour
     bool isJumping;
     bool doubleJumping;
 
+    float recoveryCount;
+
     public float radius;
     public float jumpForce;
     public float speed;
+    public float recovery;
     
     public int health;
 
@@ -115,13 +118,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnHit()
+    public void OnHit()
     {
+        recoveryCount += Time.deltaTime;
         if(health >= 1)
         {
-            
+            if(recoveryCount >= recovery)
             anim.SetTrigger("Hit");
             health--;
+
+            recoveryCount = 0;
         }
         else
         {
