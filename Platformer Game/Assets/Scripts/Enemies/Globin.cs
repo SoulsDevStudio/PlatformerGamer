@@ -7,9 +7,12 @@ public class Globin : MonoBehaviour
     Rigidbody2D rig;
     Animator anim;
 
+    GameObject player;
+
     public float speed;
     public float maxVision;
     public float stopDistance;
+    public float distancePlayer;
 
     public Transform point;
     
@@ -22,6 +25,10 @@ public class Globin : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        OnPosition();
 
         if (isRight)
         {
@@ -37,7 +44,27 @@ public class Globin : MonoBehaviour
 
     void Update()
     {
-        
+        OnPosition();
+    }
+
+    void OnPosition()
+    {
+        Vector2 localPosition = player.transform.position - transform.position;
+        localPosition = localPosition.normalized;
+        distancePlayer = localPosition.x;
+
+        if (distancePlayer >= 0)
+        {
+            transform.eulerAngles = new Vector2(0, 0);
+                direction = Vector2.right;
+            isRight = true;
+        }
+        else
+        {
+            isRight = false;
+            transform.eulerAngles = new Vector2(0, 180);
+            direction = Vector2.left;
+        }
     }
 
     void FixedUpdate()
@@ -94,6 +121,18 @@ public class Globin : MonoBehaviour
                     
                 }
             }
+            else
+            {
+                spottedPlayer = false;
+                rig.velocity = Vector2.zero;
+                anim.SetInteger("Transition", 0);
+            }
+        }
+        else
+        {
+            spottedPlayer = false;
+            rig.velocity = Vector2.zero;
+            anim.SetInteger("Transition", 0);
         }
     }
 

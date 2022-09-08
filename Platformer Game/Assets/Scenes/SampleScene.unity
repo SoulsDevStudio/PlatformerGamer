@@ -272,8 +272,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  maxVision: 6
+  maxVision: 5
   stopDistance: 1
+  distancePlayer: 0
   point: {fileID: 385689998}
   spottedPlayer: 0
   isRight: 1
