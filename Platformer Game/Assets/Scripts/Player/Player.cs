@@ -121,13 +121,17 @@ public class Player : MonoBehaviour
     public void OnHit()
     {
         recoveryCount += Time.deltaTime;
+
         if(health >= 1)
         {
             if(recoveryCount >= recovery)
-            anim.SetTrigger("Hit");
-            health--;
+            {
+                anim.SetTrigger("Hit");
+                health--;
 
-            recoveryCount = 0;
+                recoveryCount = 0;
+            }
+            
         }
         else
         {

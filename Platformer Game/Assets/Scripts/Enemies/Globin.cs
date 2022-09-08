@@ -5,6 +5,7 @@ using UnityEngine;
 public class Globin : MonoBehaviour
 {
     Rigidbody2D rig;
+    Animator anim;
 
     public float speed;
     public float maxVision;
@@ -20,18 +21,17 @@ public class Globin : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
         if (isRight)
         {
             transform.eulerAngles = new Vector2(0, 0);
             direction = Vector2.right;
-            rig.velocity = new Vector2(speed, rig.velocity.y);
         }
         else
         {
             transform.eulerAngles = new Vector2(0, 180);
             direction = Vector2.left;
-            rig.velocity = new Vector2(-speed, rig.velocity.y);
         }
     }
 
@@ -51,6 +51,7 @@ public class Globin : MonoBehaviour
     {
         if (spottedPlayer)
         {
+            anim.SetInteger("Transition",1);
             if (isRight)
             {
                 transform.eulerAngles = new Vector2(0, 0);
@@ -84,7 +85,13 @@ public class Globin : MonoBehaviour
                     spottedPlayer = false;
                     rig.velocity = Vector2.zero;
 
-                    hit.transform.GetComponent<Player>().OnHit();
+                    if(hit.transform.GetComponent<Player>().health >= 1)
+                    {
+                        anim.SetInteger("Transition", 2);
+                        hit.transform.GetComponent<Player>().OnHit();
+                    }
+
+                    
                 }
             }
         }
