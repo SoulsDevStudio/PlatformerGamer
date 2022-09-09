@@ -161,7 +161,14 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 6)
         {
             OnHit();
-        }    
+        }
+
+        if (collision.CompareTag("Coin"))
+        {
+            collision.GetComponent<Animator>().SetTrigger("Hit");
+            GameController.instance.GetCoin();
+            Destroy(collision, 0.5f);
+        }
     }
 
 
