@@ -50,7 +50,16 @@ public class Player : MonoBehaviour
 
             if(hit != null)
             {
-                hit.GetComponent<Slime>().OnHit();
+                if (hit.GetComponent<Slime>())
+                {
+                    hit.GetComponent<Slime>().OnHit();
+                }
+
+                if (hit.GetComponent<Globin>())
+                {
+                    hit.GetComponent<Globin>().OnHit();
+                }
+                
             }
 
             StartCoroutine(OnAttack());

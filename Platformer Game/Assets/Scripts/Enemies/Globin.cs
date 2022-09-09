@@ -13,6 +13,7 @@ public class Globin : MonoBehaviour
     public float maxVision;
     public float stopDistance;
     public float distancePlayer;
+    public float health;
 
     public Transform point;
     
@@ -93,6 +94,19 @@ public class Globin : MonoBehaviour
             }
         }
         
+    }
+
+    public void OnHit()
+    {
+        anim.SetTrigger("Hit");
+        health--;
+
+        if(health <= 0)
+        {
+            speed = 0;
+            anim.SetTrigger("Death");
+            Destroy(gameObject, 1f);
+        }
     }
 
     void GetPlayer()
