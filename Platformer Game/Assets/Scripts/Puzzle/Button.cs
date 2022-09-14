@@ -42,7 +42,11 @@ public class Button : MonoBehaviour
 
         if(hit != null)
         {
-            OnPressed();
+            if(hit.gameObject.CompareTag("Player") || hit.gameObject.CompareTag("CubeStone"))
+            {
+                OnPressed();
+            }
+            
         }
         else
         {
