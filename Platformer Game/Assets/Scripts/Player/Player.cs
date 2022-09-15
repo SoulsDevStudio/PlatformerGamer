@@ -22,6 +22,22 @@ public class Player : MonoBehaviour
     public Transform pointAttack;
     public Animator anim;
     public LayerMask layer;
+    public static Player instance;
+
+    void Awake()
+    {
+
+        DontDestroyOnLoad(this);
+
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -168,6 +184,16 @@ public class Player : MonoBehaviour
             collision.GetComponent<Animator>().SetTrigger("Hit");
             GameController.instance.GetCoin();
             Destroy(collision, 0.5f);
+        }
+
+        if(collision.gameObject.layer == 7)
+        {
+            GameController.instance.Level2();
+        }
+
+        if(collision.gameObject.layer == 8)
+        {
+            PlayerSpawn.instance.Spawn();
         }
     }
 
