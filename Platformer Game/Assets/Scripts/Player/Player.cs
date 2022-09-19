@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rig;
     PlayerSounds playerSounds;
+    Health healthSystem;
 
     bool isAttacking;
     bool isJumping;
@@ -17,26 +18,28 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float speed;
     public float recovery;
-    
-    public int health;
 
     public Transform pointAttack;
     public Animator anim;
     public LayerMask layer;
     public static Player instance;
 
+    public Health HealthSystem { get => healthSystem; set => healthSystem = value; }
+
     void Awake()
     {
+        Time.timeScale = 1;
 
-        DontDestroyOnLoad(this);
-
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        else
+        else if(instance != this)
         {
-            Destroy(gameObject);
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         playerSounds = GetComponent<PlayerSounds>();
+        healthSystem = GetComponent<Health>();
     }
 
     void Update()
@@ -152,12 +156,12 @@ public class Player : MonoBehaviour
     {
         recoveryCount += Time.deltaTime;
 
-        if(health >= 1)
+        if(healthSystem.health >= 1)
         {
             if(recoveryCount >= recovery)
             {
                 anim.SetTrigger("Hit");
-                health--;
+                healthSystem.health--;
 
                 recoveryCount = 0;
             }
@@ -165,7 +169,10 @@ public class Player : MonoBehaviour
         }
         else
         {
+            Time.timeScale = 0;
             anim.SetTrigger("Death");
+            GameController.instance.ShowGameOver();
+
         }
     }
 

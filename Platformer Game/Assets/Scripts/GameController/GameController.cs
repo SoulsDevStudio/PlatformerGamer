@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
 
     public int score;
     public Text scoreText;
+    public GameObject gameOver;
 
     void Awake()
     {
@@ -19,16 +20,6 @@ public class GameController : MonoBehaviour
             score = PlayerPrefs.GetInt("Score");
             scoreText.text = "x" + score.ToString();
         }
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 
     public void GetCoin()
@@ -42,5 +33,15 @@ public class GameController : MonoBehaviour
     public void Level2()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ShowGameOver()
+    {
+        gameOver.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

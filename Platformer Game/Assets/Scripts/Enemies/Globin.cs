@@ -126,7 +126,7 @@ public class Globin : MonoBehaviour
                     spottedPlayer = false;
                     rig.velocity = Vector2.zero;
 
-                    if(hit.transform.GetComponent<Player>().health >= 1)
+                    if(hit.transform.GetComponent<Player>().HealthSystem.health >= 0)
                     {
                         anim.SetInteger("Transition", 2);
                         hit.transform.GetComponent<Player>().OnHit();
