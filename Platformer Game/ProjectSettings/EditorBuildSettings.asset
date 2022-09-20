@@ -6,12 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 6d8b3d99c9315754b92bfd5e6c8231cf
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Walk.unity
+    guid: e6e2460b96a083f4a8549a7ff3e68454
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Jump.unity
+    guid: 04f5b2c02baddfb4f9d21dd113f1b105
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Enemy.unity
+    guid: d6302e1836233af4d8fb117a47165cfa
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Puzzle.unity
+    guid: dcadc0f5ed439b94eba30846da468f15
+  - enabled: 1
     path: Assets/Scenes/Lvl_1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Lvl_2.unity
     guid: 4a0da99b251f30845b3c10eb58173cb6
-  - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: 6d8b3d99c9315754b92bfd5e6c8231cf
   m_configObjects: {}

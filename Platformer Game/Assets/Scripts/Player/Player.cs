@@ -199,11 +199,6 @@ public class Player : MonoBehaviour
             Destroy(collision, 0.5f);
         }
 
-        if(collision.gameObject.layer == 7)
-        {
-            GameController.instance.Level2();
-        }
-
         if(collision.gameObject.layer == 8)
         {
             PlayerSpawn.instance.Spawn();
