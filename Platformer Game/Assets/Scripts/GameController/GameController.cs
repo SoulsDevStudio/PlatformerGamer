@@ -14,7 +14,19 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } 
+        else if(instance != this)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        
         if(PlayerPrefs.GetInt("Score") > 0)
         {
             score = PlayerPrefs.GetInt("Score");
