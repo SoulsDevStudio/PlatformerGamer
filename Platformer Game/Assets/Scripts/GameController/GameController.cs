@@ -26,14 +26,15 @@ public class GameController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        
-        if(PlayerPrefs.GetInt("Score") > 0)
+        PlayerPrefs.DeleteKey("Score");
+
+        if (PlayerPrefs.GetInt("Score") > 0)
         {
             score = PlayerPrefs.GetInt("Score");
             scoreText.text = "x" + score.ToString();
         }
 
-        PlayerPrefs.DeleteAll();
+        
     }
 
     public void GetCoin()
