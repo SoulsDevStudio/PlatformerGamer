@@ -4721,6 +4721,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 526141438}
     m_Modifications:
+    - target: {fileID: 3118036557897435673, guid: 70ab5c49490898a43ab54981b8b14d73, type: 3}
+      propertyPath: idLvl
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3118036557897435677, guid: 70ab5c49490898a43ab54981b8b14d73, type: 3}
       propertyPath: m_Name
       value: Door

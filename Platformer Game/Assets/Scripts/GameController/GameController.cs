@@ -32,6 +32,8 @@ public class GameController : MonoBehaviour
             score = PlayerPrefs.GetInt("Score");
             scoreText.text = "x" + score.ToString();
         }
+
+        PlayerPrefs.DeleteAll();
     }
 
     public void GetCoin()
