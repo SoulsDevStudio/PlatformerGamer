@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoneButtom
       objectReference: {fileID: 0}
+    - target: {fileID: 5226825237484912739, guid: 3994b37b3fb344a4f977d0d0b6d09ec2, type: 3}
+      propertyPath: animDoor
+      value: 
+      objectReference: {fileID: 916220697}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3994b37b3fb344a4f977d0d0b6d09ec2, type: 3}
 --- !u!1001 &291559715
@@ -946,6 +950,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2554901754506310251, guid: b74acc813101cfc4aa0d63000fbbc439, type: 3}
   m_PrefabInstance: {fileID: 825582410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &916220697 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1838942187597778833, guid: f422fa7ab5808db45b6167351df93cab, type: 3}
+  m_PrefabInstance: {fileID: 291559715}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &987236049
 PrefabInstance:
