@@ -32,7 +32,7 @@ Projeto desenvolvido durante o 9º módulo do Curso de Desenvolvimento Unity da 
 
 ## Instalação   
 
-Para a instalação do jogo será necessário o uso do computador e entrar no site[itchi io](https://soulsdev.itch.io/platformergamer) 
+Para a instalação do jogo será necessário o uso do computador e entrar no site [itchi io](https://soulsdev.itch.io/platformergamer) 
     
 ## Autor
 
